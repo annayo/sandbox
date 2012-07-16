@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">      
+<head>   
+	<script type="text/javascript" src="/lib/jquery/jquery.js"></script> 
+	<script type="text/javascript"> 
+		/*NOTE: carousel created for msft*/ 
+		$(document).ready(function() { 
+	
+			var pics = { 'pics': 
+				[				
+					{
+						'guid' : '0001',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0002',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0003',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0004',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0005',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0006',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0007',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0008',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0009',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0010',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					},
+					{
+						'guid' : '0011',
+						'img_small' : 'small.gif',
+						'img_med' : 'med.gif',
+						'img_lg' : 'large.gif',
+						'title' : 'title text',
+						'blurb' : 'blurb text'							
+					}										
+				]
+			};			
+			
+			//init		
+			$('#carousel_wrapper').append('<p id="paging"><a href="#">&lt; prev</a><a href="#">next &gt;</a></p>');
+			allocateItems();
+			
+			//paging
+			$('#paging a:first-child').click(function() {
+				advance(-1);	
+				return false;
+			});
+			
+			$('#paging a:last-child').click(function() {
+				advance(1);				
+				return false;
+			});						
+			
+			//movement
+			function advance(n) {
+				if (n > 0) {
+					//next 
+					$('#carousel li').each(function() {						
+						var objIndex = (parseInt($(this).attr('rel'), 10) + 1) == pics.pics.length ? 0 : parseInt($(this).attr('rel'), 10) + 1;
+						var obj = pics.pics[objIndex];
+						var markup = assembleMarkup(obj, $(this).attr('class'));						
+						$('<div class="next">' + markup + '</div>').appendTo($(this));
+						$(this).attr('rel', objIndex);
+					});
+					
+					//move items
+					$('.curr').animate({ left: '-135px'}, function() { $(this).remove(); });
+					$('.next').animate({ left: '0px'}).removeClass('next').addClass('curr');
+						
+				} else {
+					//prev
+					$('#carousel li').each(function() {						
+						var objIndex = (parseInt($(this).attr('rel'), 10) - 1 == -1) ? pics.pics.length - 1 : parseInt($(this).attr('rel'), 10) - 1;									
+						var obj = pics.pics[objIndex];
+						var markup = assembleMarkup(obj, $(this).attr('class'));						
+						$('<div class="prev">' + markup + '</div>').prependTo($(this));
+						$(this).attr('rel', objIndex);
+					});	
+					
+					//move items
+					$('.curr').animate({ left: '135px'}, function() { $(this).remove(); });
+					$('.prev').animate({ left: '0px'}).removeClass('prev').addClass('curr');				
+				}	
+			}
+			
+			function allocateItems() {
+				var objIndex = 0;
+				$('#carousel li').each(function() {
+					var obj = pics.pics[objIndex];
+					var markup = assembleMarkup(obj, $(this).attr('class'));
+					$(this).attr('rel', objIndex);										
+					$('.curr', this).html(markup);
+					objIndex++;	
+				});
+			}	
+			
+			function assembleMarkup(obj, type) {
+				switch(type){
+					case 'large':
+						markup = '<div>' + obj.img_lg + '</div><div>' + obj.guid + '</div>';
+					break;
+					case 'med':
+						markup = '<div>' + obj.img_med + '</div><div>' + obj.guid + '</div>';
+					break;
+					default:
+						markup = '<div>' + obj.img_small + '</div><div>' + obj.guid + '</div>';
+					break;
+				}
+
+				return markup;
+			}		
+			
+			/*
+			function advance(n) {
+				if (n > 0) {
+					//next 
+					$('.curr').animate({ left: '-135px'}, function() { $(this).remove(); });
+					$('.next').animate({ left: '0px'}).removeClass('next').addClass('curr');
+					
+				} else {
+					//prev
+					$('.curr').animate({ left: '135px'}, function() { $(this).remove(); });
+					$('.prev').animate({ left: '0px'}).removeClass('prev').addClass('curr');
+					
+				}
+			}
+			*/		
+		});   
+	</script> 
+	
+	<style>
+		#carousel_wrapper { overflow: hidden; width: 100%; }
+		#carousel { margin: 0 auto; width: 1000px; }
+		#carousel ul { list-style: none; overflow: hidden; padding: 0; width: 1000px; }
+		#carousel ul li { border: 1px solid #000; float: left; margin: 0 2px; overflow: hidden; padding: 0; position: relative; text-align: center; width: 135px; }
+		#carousel ul li.small { height: 30px; }
+		#carousel ul li.med { height: 50px; }
+		#carousel ul li.large { height: 70px; }
+		
+		#carousel ul li div { height: 30px; position: absolute; width: 135px; }
+		#carousel ul li div.curr { left: 0; }
+		#carousel ul li div.next { left: 135px; }
+		#carousel ul li div.prev { left: -135px; }
+		
+		#carousel ul li div div { height: auto; position: static; }
+		
+		#paging { overflow: hidden; text-align: center; width: 100%; }
+		#paging a { display: block; float: left; margin: 0 6px; }
+	</style>
+	   
+</head>  
+<body>
+
+<div id="carousel_wrapper">
+	<div id="carousel">
+		<ul>
+			<li class="small">
+				<div class="curr"></div>
+			</li>
+			<li class="small">
+				<div class="curr"></div>
+			</li>
+			<li class="med">
+				<div class="curr"></div>
+			</li>
+			<li id="hero" class="large">
+				<div class="curr"></div>
+			</li>
+			<li class="med">
+				<div class="curr"></div>
+			</li>
+			<li class="small">
+				<div class="curr"></div>
+			</li>
+			<li class="small">
+				<div class="curr"></div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

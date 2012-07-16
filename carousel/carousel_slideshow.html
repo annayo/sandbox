@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">      
+<head>   
+	<script type="text/javascript" src="/lib/jquery/jquery.js"></script>
+	<script type="text/javascript" src="gallery.js"></script> 
+	<script type="text/javascript">  
+		$(document).ready(function() { 
+			$('.gallery').gallery();			
+		});   
+	</script> 
+	
+	<style>
+		/* .gallery */
+		.gallery { overflow: hidden; width: 450px; }
+		.gallery ul { clear: both; list-style: none; margin: 0 0 4px; padding: 0; }
+		.gallery ul li { border: 1px solid #333; display: block; overflow: hidden; }
+		.gallery .paging { bottom: 0; height: 20px;  position: absolute; z-index: 4; }
+		.gallery .paging a { display: block; height: 15px; }
+		.gallery .paging a.next { float: right; }
+		.gallery .paging a.prev { float: left; }
+		
+		.gallery .slides { height: 275px; margin-bottom: 8px; position: relative; }
+		.gallery .slides ul { height: 275px; position: relative; }
+		.gallery .slides ul li { background: #fff; border: 1px solid #e3e3e5; height: 270px; left: 0px; position: absolute; top: 0px; width: 448px; z-index: 1; }
+		.gallery .slides ul li.active { z-index: 3; }
+		.gallery .slides ul li.on_deck { z-index: 4; }
+		.gallery .slides .paging { right: 5px; }
+		.gallery .slides .paging a { background: transparent url('images/sprite.gif') no-repeat; height: 30px; overflow: hidden; text-indent: -9999px; width: 13px; }
+		.gallery .slides .paging a.next { background-position: -586px -195px; }
+		.gallery .slides .paging a.prev { background-position: -576px -195px; }
+		
+		.gallery .carousel { height: 105px; margin: 0 auto; position: relative; }
+		.gallery .carousel .carousel_wrapper { height: 105px; overflow: hidden; margin: 0 auto; position: relative; width: 392px; }
+		.gallery .carousel ul { left: 0; position: absolute; top: 15px; width: 10000px; z-index: 5; }
+		.gallery .carousel ul li { cursor: pointer; float: left; height: 76px; margin: 2px 4px 2px 2px; width: 90px; }
+		.gallery .carousel ul li.active { background: #f4f4f5; border: 3px solid green; margin: 0px 4px 0px 0px; }
+		.gallery .carousel ul li.blank { border-color: #fff; visibility: hidden; }
+		.gallery .carousel .paging { width: 100%; }
+		.gallery .carousel .paging a { background: transparent url('images/sprite.gif') no-repeat; height: 30px; overflow: hidden; text-indent: -9999px; width: 13px; }
+		.gallery .carousel .paging a.next { background-position: -586px -195px; }
+		.gallery .carousel .paging a.prev { background-position: -576px -195px; }
+	</style>
+	   
+</head>  
+<body>
+
+<div class="gallery">
+	<div class="slides">
+		<ul>
+			<li class="active"><img src="images/fpo/fpo.DSC_1229aa.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl12.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.2e6esuh.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl50.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.DSC_1064-1.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl1.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl3.jpg" alt="FPO Gallery Image" /></li>					
+			<li><img src="images/fpo/fpo.kl9.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl10.jpg" alt="FPO Gallery Image" /></li>
+		</ul>
+	</div>			
+	<div class="carousel">
+		<ul>
+			<li><img src="images/fpo/fpo.DSC_1229aa_thumb.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl12_thumb.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.2e6esuh_thumb.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl50_thumb.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.DSC_1064-1_thumb.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl1_thumb.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl3_thumb.jpg" alt="FPO Gallery Image" /></li>					
+			<li><img src="images/fpo/fpo.kl9_thumb.jpg" alt="FPO Gallery Image" /></li>
+			<li><img src="images/fpo/fpo.kl10_thumb.jpg" alt="FPO Gallery Image" /></li>
+		</ul>
+	</div>			
+</div>
+
+</body>
+</html>

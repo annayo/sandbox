@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">      
+<head>   	
+	<style>
+		.carousel { height: 160px; margin: 0 auto; overflow: hidden; position: relative; width: 570px; }
+		.carousel .carousel_wrapper { height: 160px; overflow: hidden; margin: 0 auto; position: relative; width: 512px; }
+		
+		.carousel ul { clear: both; left: 0; list-style: none; padding: 0; position: absolute; top: 15px; width: 10000px; z-index: 5; }
+		.carousel ul li { border: 1px solid #333; cursor: pointer; display: block; float: left; height: 120px; margin: 0 4px 0 2px; overflow: hidden; text-align: center; width: 120px; }
+		.carousel ul li.active { background: #f4f4f5; border: 3px solid green; margin: 0px 4px 0px 0px; }
+		.carousel ul li.blank { border-color: #fff; visibility: hidden; }
+		
+		.carousel .paging { bottom: 0; height: 20px;  position: absolute; z-index: 4; width: 100%; }
+		.carousel .paging a { background: transparent url('images/bkg.arrows.png') no-repeat; display: block; height: 30px; overflow: hidden; text-indent: -9999px; width: 13px; }
+		.carousel .paging a.next { background-position: right top; float: right; }
+		.carousel .paging a.prev { background-position: left top; float: left; }
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="carousel.js"></script> 
+	<script type="text/javascript">  
+		$(document).ready(function() { 
+			$('.carousel').carousel();			
+		});   
+	</script> 
+	   
+</head>  
+<body>
+
+<div class="carousel">
+	<ul class="carousel_items">
+		<li><img src="images/fpo/fpo.DSC_1229aa_thumb.jpg" alt="FPO Gallery Image" /></li>
+		<li><img src="images/fpo/fpo.kl12_thumb.jpg" alt="FPO Gallery Image" /></li>
+		<li><img src="images/fpo/fpo.2e6esuh_thumb.jpg" alt="FPO Gallery Image" /></li>
+		<li><img src="images/fpo/fpo.kl50_thumb.jpg" alt="FPO Gallery Image" /></li>
+		<li><img src="images/fpo/fpo.DSC_1064-1_thumb.jpg" alt="FPO Gallery Image" /></li>
+		<li><img src="images/fpo/fpo.kl1_thumb.jpg" alt="FPO Gallery Image" /></li>
+		<li><img src="images/fpo/fpo.kl3_thumb.jpg" alt="FPO Gallery Image" /></li>					
+		<li><img src="images/fpo/fpo.kl9_thumb.jpg" alt="FPO Gallery Image" /></li>
+		<li><img src="images/fpo/fpo.kl10_thumb.jpg" alt="FPO Gallery Image" /></li>
+	</ul>
+</div>
+
+</body>
+</html>
